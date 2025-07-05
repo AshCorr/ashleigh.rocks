@@ -25,12 +25,12 @@ const DEPTH_COLOURS = [
 ] as const;
 
 const DEPTH_TABLE = [
-  [Depths.OPEN, Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.COSTAL, Depths.SHALLOWS],
-  [Depths.OPEN_DEEP, Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN, Depths.OPEN],
-  [Depths.ABYSSAL, Depths.SHALLOWS, Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP, Depths.OPEN_DEEP],
-  [Depths.ABYSSAL, Depths.OPEN, Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL],
-  [Depths.ABYSSAL_TRENCH, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.OPEN_DEEP, Depths.ABYSSAL_TRENCH],
-  [Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL_TRENCH, Depths.ABYSSAL_TRENCH, Depths.ABYSSAL_TRENCH]
+  [Depths.COSTAL, Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN],
+  [Depths.COSTAL, Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN],
+  [Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN, Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP],
+  [Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL],
+  [Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL_TRENCH],
+  [Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL_TRENCH]
 ] as const;
 
 type Coordinate = {
