@@ -12,7 +12,7 @@ const Depths = {
   OPEN: 2,
   OPEN_DEEP: 3,
   ABYSSAL: 4,
-  ABYSSAL_TRENCH:5
+  PRIMORDIAL:5
 } as const;
 
 const DEPTH_COLOURS = [
@@ -26,11 +26,11 @@ const DEPTH_COLOURS = [
 
 const DEPTH_TABLE = [
   [Depths.COSTAL, Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN],
-  [Depths.COSTAL, Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN],
-  [Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN, Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP],
-  [Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL],
-  [Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL_TRENCH],
-  [Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL_TRENCH]
+  [Depths.COSTAL, Depths.SHALLOWS, Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN, Depths.OPEN],
+  [Depths.SHALLOWS, Depths.SHALLOWS, Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP, Depths.OPEN_DEEP],
+  [Depths.OPEN, Depths.OPEN, Depths.OPEN, Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL],
+  [Depths.OPEN_DEEP, Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.PRIMORDIAL],
+  [Depths.OPEN_DEEP, Depths.ABYSSAL, Depths.ABYSSAL, Depths.ABYSSAL, Depths.PRIMORDIAL, Depths.PRIMORDIAL]
 ] as const;
 
 type Coordinate = {
@@ -85,8 +85,14 @@ const createBestagon = ({ coordinate, depth, viewport }: {
   bestagon.x = x;
   bestagon.y = y;
 
-  bestagon.addChild(
-    new Text({ text: depth, anchor: { x: 0.5, y: 0.5}, style: { fontSize: 10 } }));
+  const bestagonIcon = new Graphics()
+    .regularPoly(0, 0, BESTAGON_RADIUS/4, BESTAGON_SIDES)
+    .fill('white');
+
+  bestagon.addChild(bestagonIcon);
+
+  bestagonIcon.addChild(
+    new Text({ text: depth, anchor: { x: 0.5, y: 0.5}, style: { fontSize: 10, align: 'center' } }));
 
   bestagon.interactive = true;
   bestagon.onclick = () => {
